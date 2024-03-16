@@ -8,8 +8,11 @@ import AddBlog from './components/AddBlog'
 import Blogs from './components/Blogs'
 import BlogDetails from './components/BlogDetails'
 import UserBlogs from './components/UserBlogs'
+import { useSelector } from 'react-redux';
+
 
 function App() {
+  const isLoggedIn = useSelector(state=>state.isLoggedIn);
   return (
     <div>
       <header>
