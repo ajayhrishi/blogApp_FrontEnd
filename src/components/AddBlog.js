@@ -3,9 +3,10 @@
 import React from 'react'
 
 const AddBlog = () => {
+
   return (
     <div>
-      
+      In DevelopementPhase
     </div>
   )
 }

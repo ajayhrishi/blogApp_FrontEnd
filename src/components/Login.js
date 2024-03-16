@@ -3,9 +3,10 @@
 import React from 'react'
 
 const Login = () => {
+  console.log("entered to the login page");
   return (
     <div>
-      Loging Component Loaded - In development
+      Component Loaded - In development
     </div>
   )
 }
