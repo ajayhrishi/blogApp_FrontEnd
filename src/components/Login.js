@@ -3,13 +3,15 @@
 import { Button, TextField, Typography,Box } from '@mui/material'
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
-import { logIn,logOut } from '../store'
+import { useDispatch, useSelector } from 'react-redux'
+import { logIn, setIsSignUp} from '../store'
+import { useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isSignUp,setIsSignUp] = useState(false);
+  const isSignUp = useSelector(state=>state.isSignUp);
   const [inputs, setInputs]= useState({
     name:'',email:'',password:''
   });
@@ -22,27 +24,30 @@ const Login = () => {
   }
 
   const sendRequest = async(type='login')=>{
-      console.log('going to send the login request');
-      return await axios.post(`http://127.0.0.1:5000/api/user/${type}`,{name:inputs.name, email: inputs.email, password: inputs.password}).catch(err=>{console.log('there is an error')});
-      // const response = await axios.post("http://127.0.0.1:5000/api/user/signUp",{name:inputs.name, email: inputs.email, password: inputs.password}).catch(err=>{console.log(err)});
+      // console.log('going to send the login request');
+      return await axios.post(`http://127.0.0.1:5000/api/user/${type}`,{name:inputs.name, email: inputs.email, password: inputs.password}).catch(err=>{console.log(err)});
+     
   }
 
   const handleSubmit = (e)=>{
     e.preventDefault();
     if(isSignUp){
       console.log('it is a signUp request');
-      sendRequest('signUp').then(()=>{console.log('the then statement is triggered')}).then(data=>console.log(data));
+      sendRequest('signUp').then(data=>console.log(data));
     }
     else{
-      console.log('it is a login request');
-      sendRequest().then(()=>{console.log('the then statement is triggered'); dispatch(logIn())}).then(data=>console.log(data));
+      sendRequest().then(() => {
+        dispatch(logIn());
+        navigate('/blogs');
+      }).catch(err => console.log(err));
+    
     }
     
   }
 
-
-
-
+  const flipSignUp = ()=>{
+    dispatch(setIsSignUp(!isSignUp));
+  }
   return (
     <div >
       <form onSubmit={handleSubmit}>
@@ -55,12 +60,11 @@ const Login = () => {
           <TextField name="password"          placeholder="Password" margin='normal' value={inputs.password} onChange={handleChange}/>
 
           <Button type='submit' sx={{borderRadius:'3', marginTop:'3'}} color='success' variant='contained'>Submit</Button>
-          <Button sx={{borderRadius:'3', marginTop:'3'}}  onClick={()=>{setIsSignUp(!isSignUp)}}>Change To {(isSignUp && 'Login')||'SignUp'}</Button>
+          <Button sx={{borderRadius:'3', marginTop:'3'}}  onClick={()=>{flipSignUp()}}>Change To {(isSignUp && 'Login')||'SignUp'}</Button>
 
         </Box>
       </form>
     </div>
   )
 }
-
 export default Login
