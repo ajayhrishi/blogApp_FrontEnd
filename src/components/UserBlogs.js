@@ -1,11 +1,32 @@
 // to list out the blogs that only belongs to the user. 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import Blog from './Blog';
 
 const UserBlogs = () => {
+  // console.log('userBlogs component has been triggered.');
+  const id = localStorage.getItem('userId');
+  const [blogs,setBlogs]= useState();
+  // console.log('user id of the user logged in is ', id);
+  const sendRequest = async ()=>{ 
+    const res = await axios.get(`http://127.0.0.1:5000/api/blogs/user/${id}`).catch(err=>console.log(err));
+    const data = await res.data;
+    return data;
+    
+  }
+  useEffect(()=>{
+    sendRequest().then((data)=>{
+      console.log(data.userBlog.blogs)
+      setBlogs(data.userBlog.blogs);
+    })
+  },[]);
+
   return (
     <div>
-        In developmentPhase
-    </div>
+      {blogs && blogs.map((blog,index)=>
+      <Blog title={blog.title} image={blog.image} user={blog.user} description={blog.description} key={index}/>
+     )}
+     </div>
   )
 }
 

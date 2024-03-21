@@ -1,7 +1,7 @@
 import { Avatar, Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material'
 import React from 'react'
 
-const Blog = () => {
+const Blog = ({title,image,description,user}) => {
   return (
     <div>
       <Card sx={{
@@ -19,20 +19,21 @@ const Blog = () => {
         avatar={
           <Avatar 
   aria-label="recipe">
+    {user}
           </Avatar>
         }
-        title="This is the Name of the Blog"
+        title={title}
         subheader="Date when the blog is added"
       />
       <CardMedia
         component="img"
         height="194"
-        image="/static/images/cards/paella.jpg"
+        image={image}
         alt="Name of the image that should show when the image is down or for the auto read feature that is designed for the blind people"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This is the blog description.........
+          {description}
         </Typography>
       </CardContent>
 
