@@ -29,12 +29,13 @@ const Header = () => {
     <AppBar sx={{background:"linear-gradient(180deg, rgba(125,118,118,1) 5%, rgba(96,96,96,1) 13%, rgba(88,80,80,1) 18%, rgba(70,69,69,1) 26%, rgba(59,59,59,1) 30%, rgba(0,0,0,1) 50%)"}}>
         <Toolbar>
 
-            <Typography variant='h4'>BlogsApp</Typography>
+            <Typography variant='h4'>BlogApp</Typography>
             
          {isLoggedIn &&   <Box marginRight="auto" marginLeft="auto">
             <Tabs textColor='inherit' value={value} onChange={(e,val)=>{setValue(val)}}> 
               <Tab component={Link} to="/blogs" label="All Blogs" ></Tab>
               <Tab component={Link} to="/myBlogs" label="My Blogs"></Tab>
+              <Tab component={Link} to="/addBlog" label="Add Blog"></Tab>
             </Tabs>
             </Box> }
             

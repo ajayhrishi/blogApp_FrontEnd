@@ -37,7 +37,7 @@ const Login = () => {
     }
     else{
       sendRequest().then((data) => {
-        console.log('login Success: ',data);
+        // console.log('login Success: ',data);
         dispatch(logIn());
         navigate('/blogs');
         localStorage.setItem('userId',data.data.user._id)
@@ -59,11 +59,10 @@ const Login = () => {
           {isSignUp && <TextField name="name" placeholder="Name" margin='normal' value={inputs.name} onChange={handleChange}/>}
           <TextField name="email"             placeholder="email" margin='normal' value={inputs.email} onChange={handleChange}/>
           <TextField name="password"          placeholder="Password" margin='normal' value={inputs.password} onChange={handleChange}/>
-
           <Button type='submit' sx={{borderRadius:'3', marginTop:'3'}} color='success' variant='contained'>Submit</Button>
           <Button sx={{borderRadius:'3', marginTop:'3'}}  onClick={()=>{flipSignUp()}}>Change To {(isSignUp && 'Login')||'SignUp'}</Button>
-
         </Box>
+        
       </form>
     </div>
   )

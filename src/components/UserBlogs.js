@@ -7,6 +7,7 @@ const UserBlogs = () => {
   // console.log('userBlogs component has been triggered.');
   const id = localStorage.getItem('userId');
   const [blogs,setBlogs]= useState();
+  const [user, setUser]=useState();
   // console.log('user id of the user logged in is ', id);
   const sendRequest = async ()=>{ 
     const res = await axios.get(`http://127.0.0.1:5000/api/blogs/user/${id}`).catch(err=>console.log(err));
@@ -16,15 +17,26 @@ const UserBlogs = () => {
   }
   useEffect(()=>{
     sendRequest().then((data)=>{
-      console.log(data.userBlog.blogs)
-      setBlogs(data.userBlog.blogs);
+      setBlogs(data.blogs.blogs);
+      setUser(data.blogs.name);
     })
   },[]);
 
+    
   return (
     <div>
       {blogs && blogs.map((blog,index)=>
-      <Blog title={blog.title} image={blog.image} user={blog.user} description={blog.description} key={index}/>
+      <Blog  
+      isUser = {true}
+       title={blog.title} 
+       image={blog.image} 
+       user={blog.user} 
+       description={blog.description}  
+       key={index} 
+       blogId = {blog._id}
+       name={user}
+      
+      />
      )}
      </div>
   )
