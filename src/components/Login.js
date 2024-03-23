@@ -29,11 +29,11 @@ const Login = () => {
      
   }
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
     if(isSignUp){
       console.log('it is a signUp request');
-      sendRequest('signUp').then(data=>{console.log(data); localStorage.setItem('userId',data.data.user._id)});
+      await sendRequest('signUp').then(data=>{console.log(data); localStorage.setItem('userId',data.data.user._id)});
     }
     else{
       sendRequest().then((data) => {

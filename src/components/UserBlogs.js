@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Blog from './Blog';
 
+
 const UserBlogs = () => {
+  const baseURL = process.env.BASE_URL;
+  console.log(baseURL);
   // console.log('userBlogs component has been triggered.');
   const id = localStorage.getItem('userId');
   const [blogs,setBlogs]= useState();
