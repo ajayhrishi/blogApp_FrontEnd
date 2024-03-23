@@ -19,6 +19,7 @@ const Blog = ({title,image,description,user,name, isUser,blogId }) => {
   }
 
   const handleDelete = (e) =>{
+    e.preventDefault();
     deleteRequest().then(data=>{console.log(data);navigate('/blogs');}).then(()=>navigate('/myBlogs')).catch(err=>console.log(err));
   }
 
