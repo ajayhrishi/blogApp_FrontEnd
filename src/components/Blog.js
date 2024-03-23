@@ -4,23 +4,28 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const Blog = ({title,image,description,user,name, isUser,blogId }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  
   const nameParts = name.split(" "); // will help to get the first letter in both first name and last name. 
   
+
   const handleEdit = (e)=>{
     navigate(`/myBlogs/${blogId}`);
   }
 
   const deleteRequest = async()=>{
+    // console.log(location.pathname);
     const res = await axios.delete(`https://blogapp-backend-694a.onrender.com/api/blogs/deleteBlog/${blogId}`);
     return res;
   }
 
   const handleDelete = (e) =>{
     e.preventDefault();
-    deleteRequest().then(data=>{console.log(data);navigate('/blogs');}).then(()=>navigate('/myBlogs')).catch(err=>console.log(err));
+    deleteRequest().then(data=>{console.log(data);navigate('/blogs');});
   }
 
   return (
