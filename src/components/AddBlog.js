@@ -25,7 +25,7 @@ const AddBlog = () => {
   }
 
   const sendRequest = async()=>{
-    const res = await axios.post("http://127.0.0.1:5000/api/blogs/addBlog", {title:inputs.title, image:inputs.image, description:inputs.description, user: localStorage.getItem('userId')})
+    const res = await axios.post("https://blogapp-backend-694a.onrender.com/api/blogs/addBlog", {title:inputs.title, image:inputs.image, description:inputs.description, user: localStorage.getItem('userId')})
                 .catch(err=>console.log(err));
     return res;
   }

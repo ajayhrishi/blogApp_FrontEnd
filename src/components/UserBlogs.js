@@ -10,7 +10,7 @@ const UserBlogs = () => {
   const [user, setUser]=useState();
   // console.log('user id of the user logged in is ', id);
   const sendRequest = async ()=>{ 
-    const res = await axios.get(`http://127.0.0.1:5000/api/blogs/user/${id}`).catch(err=>console.log(err));
+    const res = await axios.get(`https://blogapp-backend-694a.onrender.com/api/blogs/user/${id}`).catch(err=>console.log(err));
     const data = await res.data;
     return data;
     

@@ -25,7 +25,7 @@ const Login = () => {
 
   const sendRequest = async(type='login')=>{
       // console.log('going to send the login request');
-      return await axios.post(`http://127.0.0.1:5000/api/user/${type}`,{name:inputs.name, email: inputs.email, password: inputs.password}).catch(err=>{console.log(err)});
+      return await axios.post(`https://blogapp-backend-694a.onrender.com/api/user/${type}`,{name:inputs.name, email: inputs.email, password: inputs.password}).catch(err=>{console.log(err)});
      
   }
 

@@ -14,7 +14,7 @@ const Blog = ({title,image,description,user,name, isUser,blogId }) => {
   }
 
   const deleteRequest = async()=>{
-    const res = await axios.delete(`http://127.0.0.1:5000/api/blogs/deleteBlog/${blogId}`);
+    const res = await axios.delete(`https://blogapp-backend-694a.onrender.com/api/blogs/deleteBlog/${blogId}`);
     return res;
   }
 

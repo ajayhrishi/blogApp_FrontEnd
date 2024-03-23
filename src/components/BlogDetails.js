@@ -14,7 +14,7 @@ const BlogDetails = () => {
   const navigate = useNavigate()
 
   const fetchDetails = async()=>{
-    const res = await axios.get(`http://127.0.0.1:5000/api/blogs/${id}`)
+    const res = await axios.get(`https://blogapp-backend-694a.onrender.com/api/blogs/${id}`)
     const data = await res.data;
     return data;
   }
@@ -42,7 +42,7 @@ const BlogDetails = () => {
   }
 
   const sendRequest = async()=>{
-    const res = await axios.put(`http://127.0.0.1:5000/api/blogs/update/${id}`, {title:inputs.title,description:inputs.description})
+    const res = await axios.put(`https://blogapp-backend-694a.onrender.com/api/blogs/update/${id}`, {title:inputs.title,description:inputs.description})
                 .catch(err=>console.log(err));
     return res;
   }
