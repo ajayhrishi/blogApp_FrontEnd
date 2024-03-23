@@ -22,7 +22,7 @@ const AddBlog = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    sendRequest().then(()=>navigate('/myBlogs'));
+    sendRequest().then(data=>{console.log(data);navigate('/blogs');}).then(()=>navigate('/myBlogs'));
     console.log(inputs);
   }
 
