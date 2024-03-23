@@ -22,13 +22,13 @@ const AddBlog = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    sendRequest();
+    sendRequest().then(()=>navigate('/myBlogs'));
     console.log(inputs);
   }
 
   const sendRequest = async()=>{
     const res = await axios.post("https://blogapp-backend-694a.onrender.com/api/blogs/addBlog", {title:inputs.title, image:inputs.image, description:inputs.description, user: localStorage.getItem('userId')})
-    .then(()=>navigate('/myBlogs')).catch(err=>console.log(err));
+    .catch(err=>console.log(err));
     return res;
   }
 
