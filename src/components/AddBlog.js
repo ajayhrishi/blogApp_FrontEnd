@@ -36,11 +36,11 @@ const AddBlog = () => {
         <Box border={3} borderColor='Green' borderRadius={10} boxShadow='10px 10px 20px #ccc' padding={3} margin={3} flexDirection={'column'} width='80%'>
           <Typography fontWeight={'bold'} padding={3} color='grey' variant='h2' textAlign={'center'}>Enter the Blog Details</Typography>
           <InputLabel sx={InputLable}>Title</InputLabel>
-          <TextField name='title' value={inputs.title} onChange={handleChange} margin='auto' variant='outlined' sx={{ width: '50%' }}/>
+          <TextField name='title' value={inputs.title} onChange={handleChange} variant='outlined' sx={{ width: '50%' }}/>
           <InputLabel sx={InputLable}>Description</InputLabel>
-          <TextField name='description' value={inputs.description} onChange={handleChange}  margin='auto' variant='outlined' sx={{ width: '50%' }}/>
+          <TextField name='description' value={inputs.description} onChange={handleChange}   variant='outlined' sx={{ width: '50%' }}/>
           <InputLabel sx={InputLable}>ImageURL</InputLabel>
-          <TextField  name='image' value={inputs.image} onChange={handleChange}  margin='auto' variant='outlined' sx={{ width: '50%' }}/>
+          <TextField  name='image' value={inputs.image} onChange={handleChange}  variant='outlined' sx={{ width: '50%' }}/>
           {/* Wrapping Submit button in a Box for separate line */}
           <Box display="flex" justifyContent="center" mt={2}>
             <Button type='submit' sx={{ borderRadius:'3' }} color='success' variant='contained' >Submit</Button>
