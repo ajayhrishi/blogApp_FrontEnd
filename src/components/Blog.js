@@ -18,10 +18,8 @@ const Blog = ({title,image,description,user,name, isUser,blogId }) => {
     return res;
   }
 
-  const handleDelete = async (e) =>{
-    deleteRequest().then(data=>console.log(data)).catch(err=>console.log(err));
-    await navigate('/blogs');
-    await navigate('/myBlogs');
+  const handleDelete = (e) =>{
+    deleteRequest().then(data=>{console.log(data);navigate('/blogs');}).then(()=>navigate('/myBlogs')).catch(err=>console.log(err));
   }
 
   return (
