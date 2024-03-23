@@ -1,10 +1,12 @@
 import { InputLabel, Typography, Box, TextField, Button } from '@mui/material'
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const InputLable = {mb:1, mt:2, fontSize:'24px', fontWeight:'bold'};
 
 const AddBlog = () => {
+  const navigate = useNavigate();
   const [inputs, setInputs]= useState({
     title:'',
     image:'',
@@ -26,7 +28,7 @@ const AddBlog = () => {
 
   const sendRequest = async()=>{
     const res = await axios.post("https://blogapp-backend-694a.onrender.com/api/blogs/addBlog", {title:inputs.title, image:inputs.image, description:inputs.description, user: localStorage.getItem('userId')})
-                .catch(err=>console.log(err));
+    .then(()=>navigate('/myBlogs')).catch(err=>console.log(err));
     return res;
   }
 
